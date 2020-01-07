@@ -27,6 +27,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision "ansible_local" do |ansible|
     ansible.provisioning_path = "/home/vagrant/sample/"
     ansible.install_mode = "pip"
+    ansible.pip_install_cmd = "sudo dnf install -y python3-pip && sudo ln -s -f /usr/bin/pip3 /usr/bin/pip"
     ansible.version = "2.7.13"
     ansible.compatibility_mode = "2.0"
     ansible.extra_vars = { ansible_python_interpreter:"/usr/bin/python3" }
